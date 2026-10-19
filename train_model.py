@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -6,7 +8,8 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 
 
 def main():
-    df = pd.read_csv('data/data.csv')
+    data_path = Path(__file__).resolve().parent / 'data' / 'data.csv'
+    df = pd.read_csv(data_path)
     df = df.drop(columns=['id'], errors='ignore')
 
     X = df.drop(columns=['diagnosis'])

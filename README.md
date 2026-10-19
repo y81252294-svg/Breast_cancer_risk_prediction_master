@@ -38,6 +38,28 @@ The repository is a learning project focused on:
    python train_model.py
    ```
 
+## Run the interactive app
+
+Run the Streamlit interface from the repository root:
+
+```bash
+streamlit run app.py
+```
+
+The app provides tumor-measurement inputs, benign/malignant predictions, probability estimates, and a small held-out accuracy summary. It is for educational use only and must not be used as a medical diagnosis.
+
+## Run the web API locally
+
+Start the FastAPI app with:
+
+```bash
+uvicorn api.index:app --reload
+```
+
+Open `http://127.0.0.1:8000/` for the browser interface. The prediction endpoint is `POST http://127.0.0.1:8000/api/predict` and requires all 30 numeric tumor measurements; values must be finite and non-negative. FastAPI's interactive API docs are available at `http://127.0.0.1:8000/docs`.
+
+The included `vercel.json` configures the FastAPI app for Vercel deployment. The Streamlit interface is intended to be run separately with `streamlit run app.py`.
+
 ## What the model does
 The script:
 - loads the breast cancer CSV file
@@ -49,4 +71,3 @@ The script:
 
 ## Expected result
 A working SVM classifier should produce strong performance on the Wisconsin breast cancer dataset, typically with high accuracy and strong sensitivity/specificity.
-
