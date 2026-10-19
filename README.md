@@ -59,6 +59,7 @@ uvicorn api.index:app --reload
 Open `http://127.0.0.1:8000/` for the browser interface. The prediction endpoint is `POST http://127.0.0.1:8000/api/predict` and requires all 30 numeric tumor measurements; values must be finite and non-negative. FastAPI's interactive API docs are available at `http://127.0.0.1:8000/docs`.
 
 The included `vercel.json` configures the FastAPI app for Vercel deployment. The Streamlit interface is intended to be run separately with `streamlit run app.py`.
+`pyproject.toml` contains only the FastAPI deployment dependencies so Vercel does not bundle the local Streamlit and visualization stack. `requirements.txt` retains the complete dependencies for running the Streamlit app, notebooks, and training script locally.
 
 ## What the model does
 The script:
